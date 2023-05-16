@@ -1,0 +1,22 @@
+[
+  {
+    "CLASS": "SY IT A",
+    "DEPARTMENT": "IT",
+    "TEACHERS": [1, 3]
+  },
+  {
+    "CLASS": "SY IT B",
+    "DEPARTMENT": "IT",
+    "TEACHERS": [1, 3]
+  },
+  {
+    "CLASS": "SY CS A",
+    "DEPARTMENT": "CS",
+    "TEACHERS": [5, 2]
+  },
+  {
+    "CLASS": "SY ENTC B",
+    "DEPARTMENT": "ENTC",
+    "TEACHERS": [6, 4]
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "NAME": "SAMIR SHAIKH",
+    "DEPARTMENT": "IT",
+    "T_ID": 1
+  },
+  {
+    "NAME": "SARAH SHAIKH",
+    "DEPARTMENT": "CS",
+    "T_ID": 2
+  },
+  {
+    "NAME": "ARJUN SINGH",
+    "DEPARTMENT": "IT",
+    "T_ID": 3
+  },
+  {
+    "NAME": "ARNAV GOYEL",
+    "DEPARTMENT": "ENTC",
+    "T_ID": 4
+  },
+  {
+    "NAME": "ARUN SHAH",
+    "DEPARTMENT": "CS",
+    "T_ID": 5
+  },
+  {
+    "NAME": "PRAKASH SINGH",
+    "DEPARTMENT": "ENTC",
+    "T_ID": 6
+  }
+]

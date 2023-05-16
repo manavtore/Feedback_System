@@ -1,0 +1,18 @@
+[
+  {
+    "url": "src/components/images/image1.jpg",
+    "id": 1
+  },
+  {
+    "url": "src/components/images/image2.jpg",
+    "id": 2
+  },
+  {
+    "url": "src/components/images/image3.jpg",
+    "id": 3
+  },
+  {
+    "url": "src/components/images/image4.jpg",
+    "id": 4
+  }
+]
