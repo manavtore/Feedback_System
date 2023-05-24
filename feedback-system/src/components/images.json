@@ -1,18 +1,20 @@
 [
   {
-    "url": "src/components/images/image1.jpg",
-    "id": 1
+    "url": "src/components/images/Bill_Gates.jpg",
+    "id": 1,
+    "text": "“We all need people who will give us feedback. That’s how we improve”",
+    "name": "-Bill Gates"
   },
   {
-    "url": "src/components/images/image2.jpg",
-    "id": 2
+    "url": "src/components/images/Elon_Musk.jpg",
+    "id": 2,
+    "text": "“I think it’s very important to have a feedback loop, where you’re constantly thinking about what you’ve done and how you could be doing it better.”",
+    "name": "Elon Musk"
   },
   {
-    "url": "src/components/images/image3.jpg",
-    "id": 3
-  },
-  {
-    "url": "src/components/images/image4.jpg",
-    "id": 4
+    "url": "src/components/images/shaw1.jpg",
+    "id": 3,
+    "text": "“There is no failure. Only feedback.”",
+    "name": "George Bernand Shaw"
   }
 ]

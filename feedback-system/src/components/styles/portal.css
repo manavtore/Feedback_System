@@ -1,0 +1,64 @@
+/* label{
+    padding: 10px;
+} */
+.criteria > label {
+  padding-top: 10px;
+}
+h1 {
+  padding: 17px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto auto;
+  color: black;
+  gap: 13px;
+
+}
+.grid-inner {
+  display: grid;
+  grid-template-columns: 120px 120px 120px 120px auto auto;
+  gap: 13px;
+  color: black;
+}
+input[type="radio"] {
+  width: 20px;
+  margin-right: 60px;
+  margin-top: 25px;
+}
+h5 {
+  margin: 12px;
+  font-size: 22px;
+}
+.question {
+  width: 30px;
+}
+.main-form {
+  border: 4px solid #5b61ed;
+  background-color: rgb(255, 255, 255);
+  
+  margin: 4rem 13rem;
+  width: 60rem;
+  color: #5b61ed;
+  border-radius: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.submit{
+  margin: 3px;
+  width: 120px;
+  height: 39px;
+  margin-bottom: 20px;
+  position: relative;
+  left: 280px;
+  background-color: #5b61ed;
+  color: aliceblue;
+  border-radius:10px ;
+  border: 3px solid white;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
+

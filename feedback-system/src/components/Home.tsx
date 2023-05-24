@@ -1,31 +1,27 @@
 import ImageInfo from "./imageInfo";
-
+import { Link } from "react-router-dom";
+import React from 'react';
+import "./styles/home.css";
 const Home = () => {
   return (
-    <>
-      <h3 className="center">WELCOME TO FEEDBACK SYSTEM</h3>
-      <div className="info">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum, saepe.
-        Reprehenderit qui commodi amet reiciendis debitis laborum quae natus
-        deserunt sapiente iste rem placeat culpa alias, molestiae eos ipsam
-        distinctio doloremque dolore, magnam totam, provident accusantium est
-        esse. Labore dolor reiciendis qui et at nam aliquid officia nobis odio
-        consequatur. Quisquam ab ratione enim ipsa numquam. Facilis deserunt
-        odit dolorem porro velit laborum maiores unde nobis! Lorem ipsum dolor,
-        sit amet consectetur adipisicing elit. Eius perspiciatis doloribus
-        provident beatae soluta hic! Cum consectetur tempora debitis numquam
-        distinctio! Odit laudantium accusantium doloremque adipisci amet fuga
-        quam nihil, quis magnam veritatis, natus aliquam deserunt. Placeat id
-        labore, error, iste tempore voluptatibus magnam natus quis, illum omnis
-        nobis doloribus earum in ullam unde ducimus minima nam non quaerat
-        corporis totam dolore perspiciatis aspernatur repudiandae! Nesciunt
-        alias saepe nam aspernatur sequi ex nisi! Qui error et voluptates quasi
-        quo ad, saepe molestias vitae aliquam totam fugiat minus maiores modi
-        voluptatum blanditiis facilis facere doloremque ipsum non fuga aperiam
-        amet ducimus.
+    <main>
+      <h3>AMPLIFY YOUR VOICE WITH FEEDBACK SYSTEM</h3>
+      <div className="img-txt">
+        <div className="info">
+          Feedback is one of the most effective teaching and learning techniques
+          that puts out a direct impact on both teaching and learning process
+          that has an immediate impact on the process of acquiring knowledge
+        </div>
+        <img src="src\components\images\feedback_img.jpg" alt="" />
       </div>
+      <Link to="/ranking">
+        <button className="blue-btn">Ranking</button>
+      </Link>
+      <Link to="/portal">
+        <button className="white-btn">Feedback</button>
+      </Link>
       <ImageInfo></ImageInfo>
-    </>
+    </main>
   );
 };
 
