@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+}
+
+h3 {
+  color: aliceblue;
+  margin-left: 2em;
+  font-size: 1.8em;
+  padding-top: 80px;
+  padding-left: 110px;
+  /* width: 100px; */
+  /* margin-right: -20px; */
+}
+.info {
+  position: relative;
+  left: 190px;
+  font-size: 24px;
+  margin-top: 30px;
+  color: aliceblue;
+  font-size: 20px;
+  margin-bottom: 60px;
+
+  /* background-color: black; */
+}
+.img-txt {
+  display: flex;
+  justify-content: space-between;
+  /* margin: 3rem 9rem; */
+}
+main {
+  background-color: #5b61ed;
+  width: 65vw;
+  min-width: 923px;
+
+  height: 87rem;
+}
+.img-txt > img {
+  position: relative;
+  left: 26rem;
+  top: 17px;
+  width: 500px;
+  height: 200px;
+}
+.blue-btn {
+  position: relative;
+  left: 200px;
+  bottom: 40px;
+  margin-right: 20px;
+  width: 130px;
+  height: 33px;
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: #5b61ed;
+  border: 0.1px solid rgb(255, 255, 255);/
+}
+button:hover {
+  background-color: #4d50c1;
+  cursor: pointer;
+  color: aliceblue;
+  border: 1px solid rgb(168, 168, 168);
+}
+.white-btn {
+  position: relative;
+  left: 200px;
+  bottom: 40px;
+  margin-right: 20px;
+  width: 130px;
+  height: 33px;
+  border: none;
+
+  border-radius: 5px;
+  background-color: aliceblue;
+  color: #5b61ed;
+}
+.images {
+  margin-top: 10px;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.images > img {
+  margin-top: 30px;
+  width: 40px;
+}
+footer > .text {
+  margin: 10px;
+  font-size: 22px;
+  display: flex;
+  justify-content: center;
+}
