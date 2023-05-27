@@ -1,9 +1,19 @@
 import ImageInfo from "./imageInfo";
 import { Link } from "react-router-dom";
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import "./styles/home.css";
-const Home = () => {
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase";
+import { User } from "firebase/auth";
+
+interface HomeProps  {
+  setLoggedIn: Dispatch<SetStateAction<User | null>>
+}
+
+const Home = ({setLoggedIn}: HomeProps) => {
   return (
+    
+
     <main>
       <h3>AMPLIFY YOUR VOICE WITH FEEDBACK SYSTEM</h3>
       <div className="img-txt">
@@ -19,6 +29,12 @@ const Home = () => {
       </Link>
       <Link to="/portal">
         <button className="white-btn">Feedback</button>
+      </Link>
+      <Link to={`/`}>
+      <button onClick={() => {
+        signOut(auth)
+        setLoggedIn(null)
+      }}>hello</button>
       </Link>
       <ImageInfo></ImageInfo>
     </main>
