@@ -1,14 +1,19 @@
 import { Link, Outlet } from "react-router-dom";
 import "./styles/navbar.css";
-import React from 'react';
+import React from "react";
+import { signOut } from "firebase/auth";
+import { auth } from "../config/firebase";
 const Navbar = () => {
   return (
     <>
       <header>
         <div>
-          <img src="src\components\images\FEEDBACK_SYMBOL.jpg" alt="" width={40} />
+          <img
+            src="src\components\images\FEEDBACK_SYMBOL.jpg"
+            alt=""
+            width={40}
+          />
           <span>FEEDBACK SYSTEM</span>
-          
         </div>
         <ul>
           <li>
@@ -20,6 +25,13 @@ const Navbar = () => {
           <li>
             <Link to="/portal">Feedback Portal</Link>
           </li>
+          <button
+            onClick={() => {
+              signOut(auth);
+            }}
+          >
+            LogOut
+          </button>
         </ul>
       </header>
       <Outlet />

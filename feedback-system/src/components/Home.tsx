@@ -1,8 +1,14 @@
 import ImageInfo from "./imageInfo";
 import { Link } from "react-router-dom";
-import React from 'react';
 import "./styles/home.css";
-const Home = () => {
+import { Dispatch } from "react";
+import { User } from "firebase/auth";
+
+interface HomeProps {
+  setUser: Dispatch<React.SetStateAction<User | null>>
+}
+
+const Home = ({ setUser }: HomeProps) => {
   return (
     <main>
       <h3>AMPLIFY YOUR VOICE WITH FEEDBACK SYSTEM</h3>

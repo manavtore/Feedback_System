@@ -1,17 +1,31 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { Teacher, classData } from "./Ranking";
+
 import React from "react";
 import { useState, useEffect } from "react";
 import "./styles/portal.css";
-
-type qstns = string[];
+import {
+  collection,
+  getDocs,
+  onSnapshot,
+  where,
+  query,
+  addDoc,
+} from "firebase/firestore";
+import { db } from "../config/firebase";
+import { classes, qstns, sClass, teacher, votes } from "./types";
 
 // import React from 'react'
 
 const Portal = () => {
+  //references
+  let classRef = collection(db, "Teach");
+  let teacherRef = collection(db, "Teacher");
+  let voteref = collection(db, "Votes");
+  //
   let rating = [5, 4, 3, 2, 1];
-  let [res, setRes] = useState({
+  let [res, setRes] = useState<votes>({
+    id: 0,
     q0: 0,
     q1: 0,
     q2: 0,
@@ -23,8 +37,11 @@ const Portal = () => {
   });
 
   let [user, setUser] = useState("");
-  let [tData, settData] = useState<Teacher>();
+  let [nameset, setnames] = useState<classes>([]);
+  let [classdata, setc] = useState<sClass>();
+  let [tData, settData] = useState<teacher[]>();
   let [teacherName, setName] = useState<string>();
+
   function handler(e: React.ChangeEvent<HTMLInputElement>) {
     setUser(e.target.value);
   }
@@ -35,38 +52,86 @@ const Portal = () => {
   }
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    console.table(res);
+    if (res.id != 0) {
+      if (
+        Object.values(res).filter((e) => {
+          return e === 0;
+        }).length == 0
+      ) {
+        addDoc(voteref, res);
+        alert("FEEDBACK SENT SUCCESSFULLY");
+      } else {
+        event.preventDefault();
+        alert("PLEASE ENTER ALL FIELDS");
+      }
+    }
   };
   const ansHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
     console.log(event.target);
-    setRes((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
+    let td = tData
+      ?.filter((e) => {
+        return e.NAME === teacherName;
+      })
+      .map((ee) => {
+        return ee.T_ID;
+      }) || [0];
+    setRes((oldn) => ({
+      ...oldn,
+      id: td[0],
+      [name]: Number(value),
     }));
   };
 
-  let classData = useQuery<classData>(["classdata"], async () => {
-    let res = await axios.get("src/components/classNteacher.json");
-    return res.data;
-  });
+  useEffect(() => {
+    let fn = async () => {
+      await onSnapshot(classRef, (snapshot) => {
+        const empArr: sClass[] = [];
 
-  let Teachers = useQuery<Teacher>(["teacher"], async () => {
-    let res = await axios.get("src/components/teacherData.json");
-    return res.data;
-  });
+        snapshot.forEach((doc) => {
+          const data = doc.data() as sClass;
+          empArr.push(data);
+        });
+        setnames(empArr);
+      });
+    };
+    fn();
+  }, []);
+  const classref = query(classRef, where("CLASS", "==", user));
 
   useEffect(() => {
-    let temp = classData.data?.find((ele) => {
-      return ele.CLASS === user;
+    if (user) {
+      let fn = async () => {
+        await onSnapshot(classref, (snapshot) => {
+          const empArr: sClass[] = [];
+          snapshot.forEach((doc) => {
+            const data = doc.data() as sClass;
+            empArr.push(data);
+            setc(data);
+            console.log(empArr);
+          });
+        });
+      };
+      fn();
+    }
+  }, [user]);
+
+  const teacherref = query(
+    teacherRef,
+    where("T_ID", "in", classdata?.TEACHERS ?? [0])
+  );
+  useEffect(() => {
+    console.log("hi");
+    onSnapshot(teacherref, (snapshot) => {
+      const empArr: teacher[] = [];
+      snapshot.forEach((doc) => {
+        const data = doc.data() as teacher;
+        empArr.push(data);
+        console.table(empArr);
+        settData(empArr);
+      });
     });
-    let temp2 = Teachers.data?.filter((ele) => {
-      return temp?.TEACHERS.includes(ele.T_ID);
-    });
-    settData(temp2);
-    console.log(tData);
-  }, [classData.data, user]);
+  }, [classdata]);
 
   let Questions = useQuery<qstns>(["questions"], async () => {
     let data = await axios.get("src/components/Questionarrie.json");
@@ -81,7 +146,7 @@ const Portal = () => {
         <input type="text" list="browsers" onChange={handler}></input>
 
         <datalist id="browsers">
-          {classData.data?.map((ele, ind) => {
+          {nameset?.map((ele, ind) => {
             return <option value={ele.CLASS} key={ind}></option>;
           })}
         </datalist>
@@ -96,7 +161,7 @@ const Portal = () => {
           })}
         </datalist>
       </div>
-      {tData?.filter((ele) => {
+      {tData?.filter((ele: teacher) => {
         return ele.NAME === teacherName;
       }).length == 0 || teacherName?.length === 0 ? (
         <></>
@@ -113,7 +178,7 @@ const Portal = () => {
               <h5>AVERAGE</h5>
             </div>
             {teacherName ? (
-              <form onSubmit={handleSubmit} className="grid-inner">
+              <form onSubmit={(e) => handleSubmit(e)} className="grid-inner">
                 {Questions.data?.map((ele, index) => {
                   return (
                     <>

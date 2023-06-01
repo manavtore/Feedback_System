@@ -1,62 +1,124 @@
+.body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .center > h2 {
-    padding: 6px;
-  }
-  div > h2 {
-    margin-top: 6rem;
-    font-size: 2.25rem;
-    text-align: center;
-  
-    background-color: #ffa500;
-    margin-bottom: 10px;
-    border-radius: 20px 10px;
-    width: 19.4rem;
-  }
-  .heading {
-    text-align: center;
-    font-size: 30px;
-    padding: 20px 0px;
-    background-color: #5b61ed;
-    color: aliceblue;
-    font-weight: 900;
-  }
-  .login {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .loginForm {
-    /* background-color: aqua; */
-    height: 20rem;
-    width: 20rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #5b61ed;
-    border-radius: 29px 10px;
-  }
-  .loginForm > input {
-    padding: 3px;
-    height: 1.6rem;
-    margin: 5px 0px;
-    width: 18rem;
-    border-radius: 4px;
-  }
-  
-  .loginForm > button {
-    width: 6rem;
-    margin-top: 10px;
-    height: 1.5rem;
-    border-radius: 7px;
-    border: none;
-    background-color: orange;
-    font-weight: bold;
-  }
-  button:hover {
-    background-color: rgb(207, 135, 0);
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.center > h2 {
+  padding: 6px;
+}
+div > h2 {
+  margin-top: 6rem;
+  font-size: 2.25rem;
+  text-align: center;
+
+  background-color: #ffa500;
+  margin-bottom: 10px;
+  border-radius: 20px 10px;
+  width: 19.4rem;
+}
+.heading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  text-align: center;
+  font-size: 30px;
+  padding: 20px 0px;
+  background: linear-gradient(
+    to right,
+    rgba(100, 0, 128, 0.864),
+    rgba(100, 0, 128, 0.864),
+    rgba(5, 138, 168, 0.823),
+    rgba(37, 149, 187, 0.83)
+  );
+  color: aliceblue;
+  font-weight: 900;
+}
+
+.login {
+  background: linear-gradient(
+    to right,
+    rgba(100, 0, 128, 0.864),
+    rgba(100, 0, 128, 0.864),
+    rgba(5, 138, 168, 0.823),
+    rgba(37, 149, 187, 0.83)
+  );
+  border-radius: 20px;
+}
+
+.loginForm {
+  position: relative;
+  /* background-color: aqua; */
+  height: 350px;
+  width: 350px;
+  background: #222;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  border-radius: 20px;
+}
+
+.loginForm h1 {
+  font-weight: 900;
+  letter-spacing: 2px;
+}
+
+.loginForm::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(100, 0, 128, 0.864),
+    rgba(100, 0, 128, 0.864),
+    rgba(5, 138, 168, 0.823),
+    rgba(37, 149, 187, 0.83)
+  );
+  z-index: -1;
+  transform: perspective(2rem);
+  filter: blur(15px);
+  animation: animate 200ms linear;
+
+  animation: animate 20s infinite;
+}
+
+.loginForm > input {
+  padding: 3px;
+  height: 1.6rem;
+  margin: 5px 0px;
+  width: 18rem;
+  border-radius: 4px;
+}
+
+.loginForm > button {
+  width: 6rem;
+  padding: 5px;
+  border-radius: 7px;
+  border: none;
+  background-color: orange;
+  font-weight: bold;
+  font-size: 0.8rem;
+  color: #fff;
+  text-align: center;
+  padding: ;
+}
+
+.loginForm input {
+  width: 250px;
+  padding: 15px;
+  border-radius: 20px;
+  border: none;
+  outline: 0;
+  text-align: center;
+}

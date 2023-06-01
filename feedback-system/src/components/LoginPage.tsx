@@ -1,55 +1,41 @@
 import { useState } from "react";
+import { auth } from "../config/firebase";
 import "./styles/login.css";
+import { signInWithEmailAndPassword } from "firebase/auth";
 // import { Route, Router } from "react-router-dom";
 
 interface obj {
   userName: string;
   passWord: string;
 }
-interface props {
-  // Name:string;
-  // Word:string;
-  isTrue: (check: boolean) => void;
-}
 
-let Accessors: obj = {
-  userName: "SUSHANT",
-  passWord: "9860336973",
-};
-
-const LoginPage = (Props: props) => {
+const LoginPage = () => {
   let [username, setName] = useState("");
   let [password, setPass] = useState("");
 
-  function handler() {
-    if (Accessors.userName === username && Accessors.passWord === password) {
-      console.log("SUCCESS");
-      Props.isTrue(true);
-    } else {
-      console.warn("RETEY AGAIN");
-      Props.isTrue(false);
+  const signin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, username, password);
+    } catch (error) {
+      console.log(error);
     }
-    // setpData([
-    //   {
-    //     userName: username,
-    //     passWord: password,
-    //   },
-    // ]);
-  }
+  };
+  console.log(auth.currentUser?.email);
 
   return (
-    <div>
-      <h1
-        className="
+    <div className="body">
+      <div>
+        <h1
+          className="
         heading"
-      >
-        WELCOME TO FEEDBACK SYSTEM
-      </h1>
-      <div className="center">
-        <h2>Login</h2>
+        >
+          WELCOME TO FEEDBACK SYSTEM
+        </h1>
       </div>
+
       <div className="login">
         <div className="loginForm">
+          <h1>LOGIN</h1>
           <input
             type="text"
             placeholder="USERNAME"
@@ -65,7 +51,7 @@ const LoginPage = (Props: props) => {
             value={password}
             onChange={(e) => setPass(e.target.value)}
           ></input>
-          <button onClick={() => handler()}>SUBMIT</button>
+          <button onClick={signin}>SUBMIT</button>
         </div>
       </div>
     </div>
