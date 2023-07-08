@@ -1,0 +1,28 @@
+.res-cards{
+ display: grid;
+ grid-template-columns: 9rem 3rem 34rem 6rem;
+ align-items: center;
+ margin: 2rem;
+ border: 3px solid purple;
+ padding: 10px;
+ width: 60rem;
+ border-radius: 6px;
+ justify-content: center;
+}
+
+.img-name-teacher>img{
+    width: 5rem;
+}
+
+.cards-containers{
+   display: flex;
+   flex-direction: column;
+   padding-top: 4rem;
+   align-items: center;
+}
+.img-name-teacher >img{
+    border-radius: 40px;
+}
+.info-teacher{
+    text-align: center;
+}

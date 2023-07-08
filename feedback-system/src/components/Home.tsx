@@ -1,16 +1,14 @@
 import ImageInfo from "./imageInfo";
 import { Link } from "react-router-dom";
-import React, { Dispatch, SetStateAction } from 'react';
 import "./styles/home.css";
-import { signOut } from "firebase/auth";
-import { auth } from "../../config/firebase";
+import { Dispatch } from "react";
 import { User } from "firebase/auth";
 
-interface HomeProps  {
-  setLoggedIn: Dispatch<SetStateAction<User | null>>
+interface HomeProps {
+  setUser: Dispatch<React.SetStateAction<User | null>>
 }
 
-const Home = ({setLoggedIn}: HomeProps) => {
+const Home = ({ setUser }: HomeProps) => {
   return (
     
 

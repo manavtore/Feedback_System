@@ -1,0 +1,79 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  /* overflow-x: hidden; */
+}
+
+nav {
+  /* background: linear-gradient(
+    to right,
+    rgba(100, 0, 128, 0.864),
+    rgba(100, 0, 128, 0.864),
+    rgba(5, 138, 168, 0.823),
+    rgba(37, 149, 187, 0.83)
+  ); */
+
+    background: linear-gradient(
+    to right,
+    rgba(108, 6, 210, 0.912),
+    rgba(78, 20, 193, 0.864),
+    rgba(0, 74, 149, 0.823),
+    rgba(37, 149, 187, 0.83)
+  );
+
+
+
+  /* background: url(../../images/bgimg.png); */
+  box-shadow: 1px 1px 1px ;
+
+
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-name {
+  gap: 10px;
+  margin-left: 3rem;
+  display: flex;
+  align-items: center;
+  color: aliceblue;
+}
+
+.logo-name h1 {
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  width: 22rem;
+  /* margin-right: 11rem; */
+}
+
+.nav-links > a {
+  color: rgb(205, 206, 208);
+}
+.logo-name > img {
+  width: 2.4rem;
+  border-radius: 20px;
+}
+nav button {
+  position: relative;
+  height: 35px;
+  border: none;
+  padding: 8px 15px;
+  letter-spacing: 2px;
+  font-size: small;
+  font-weight: 700;
+  font-family: sans-serif;
+  border-radius: 20px;
+  background: #222;
+  color: #dbd9d9;
+  /* text-transform: uppercase; */
+}

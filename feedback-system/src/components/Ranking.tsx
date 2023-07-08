@@ -1,60 +1,74 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import { useEffect, useState } from "react";
 import "./styles/ranking.css";
 import AOS from "aos";
-import React from 'react';
-
-export type classData = [singleClass];
-
-export type singleClass = {
-  CLASS: string;
-  DEPARTMENT: string;
-  TEACHERS: number[];
-};
-
-export type Teacher = {
-  RESULT: number;
-  url: string;
-  NAME: string;
-  DEPARTMENT: string;
-  T_ID: number;
-  QUALIFICATION: string;
-  EXPERIENCE: string;
-  AWARDS: string;
-}[];
+import React from "react";
+import { db } from "../config/firebase";
+import { collection, onSnapshot, where, query } from "firebase/firestore";
+import { classes, sClass, teacher } from "./types";
 
 const Ranking = () => {
   let [user, setUser] = useState("");
-  let [tid, setTid] = useState<number[]>([]);
+  let [nameset, setnames] = useState<classes>([]);
+  let [teachers, setteachers] = useState<teacher[]>([]);
+  let [tid, setTid] = useState<number[]>([0]);
   let [select, setSelect] = useState<number[]>([]);
   function handler(e: React.ChangeEvent<HTMLInputElement>) {
     setUser(e.target.value);
+
     console.log(user);
   }
+  let classRef = collection(db, "Teach");
+  let teacherref = collection(db, "Teacher");
 
-  let classData = useQuery<classData>(["classdata"], async () => {
-    let res = await axios.get("src/components/classNteacher.json");
-    return res.data;
-  });
+  useEffect(() => {
+    let fn = async () => {
+      await onSnapshot(classRef, (snapshot) => {
+        const empArr: sClass[] = [];
 
-  let Teachers = useQuery<Teacher>(["teacher"], async () => {
-    let res = await axios.get("src/components/teacherData.json");
-    return res.data;
-  });
+        snapshot.forEach((doc) => {
+          const data = doc.data() as sClass;
+          empArr.push(data);
+        });
+        setnames(empArr ?? []);
+      });
+    };
+    fn();
+    console.log(
+      nameset?.find((e) => {
+        e.CLASS === user;
+      })
+    );
+  }, []);
 
   useEffect(() => {
     AOS.init();
   }, []);
 
+  let teacherquery = query(teacherref, where("T_ID", "in", tid));
   useEffect(() => {
-    let temp = classData.data?.find((ele) => {
-      return ele.CLASS === user;
+    let tp = nameset?.find((el) => {
+      return el.CLASS === user;
     });
-    setTid(temp?.TEACHERS ?? []);
+    setTid(tp?.TEACHERS ?? [0]);
+    // console.log(tid);
+  }, [user]);
 
-    // setSelect([...temp?.TEACHERS]);
-  }, [classData.data, user]);
+  useEffect(() => {
+    setSelect([tid[0], 0]);
+    let fn = async () => {
+      await onSnapshot(teacherquery, (snapshot) => {
+        const empArr: teacher[] = [];
+
+        snapshot.forEach((doc) => {
+          const data = doc.data() as teacher;
+          empArr.push(data);
+        });
+        console.log(empArr);
+        setteachers(empArr);
+      });
+    };
+    fn();
+  }, [tid]);
 
   return (
     <main>
@@ -64,17 +78,16 @@ const Ranking = () => {
         <input type="text" list="browsers" onChange={handler}></input>
 
         <datalist id="browsers">
-          {classData.data?.map((ele, ind) => {
+          {nameset?.map((ele, ind) => {
             return <option value={ele.CLASS} key={ind}></option>;
           })}
         </datalist>
       </div>
-
       {select.length == 0 || tid.length === 0 ? (
         <></>
       ) : (
         <>
-          {Teachers.data
+          {teachers
             ?.filter((ele) => {
               return ele.T_ID === select[0];
             })
@@ -100,12 +113,12 @@ const Ranking = () => {
         </>
       )}
 
-      {Teachers.isLoading ? (
-        <div>Loading...</div>
+      {user.length === 0 ? (
+        <div></div>
       ) : (
-        Teachers.data
-          ?.filter((ele) => {
-            return tid.includes(ele.T_ID);
+        teachers
+          .sort((x, y) => {
+            return y.RESULT - x.RESULT;
           })
           .map((ele, ind) => {
             return (
@@ -115,6 +128,7 @@ const Ranking = () => {
                 onClick={() => {
                   let temp: Array<number> = [ele.T_ID, ind];
                   setSelect(temp);
+                  console.log(select);
                 }}
               >
                 <div className="card-body">

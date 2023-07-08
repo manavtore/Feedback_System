@@ -51,7 +51,7 @@ main {
   border-radius: 5px;
   color: aliceblue;
   background-color: #5b61ed;
-  border: 0.1px solid rgb(255, 255, 255);/
+  border: 0.1px solid rgb(255, 255, 255);
 }
 button:hover {
   background-color: #4d50c1;
@@ -89,3 +89,4 @@ footer > .text {
   display: flex;
   justify-content: center;
 }
+

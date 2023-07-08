@@ -1,67 +1,43 @@
 import { useState } from "react";
+import { auth } from "../config/firebase";
 import "./styles/login.css";
-import firebase from "firebase/compat/app";
-import { auth } from "../../config/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
-//  import { Route, Router } from "react-router-dom";
+// import { Route, Router } from "react-router-dom";
 
-
-
-// interface obj {
-//   userName: string;
-//   passWord: string;
-// }
-interface props {
-  // Name:string;
-  // Word:string;
-  isTrue: (check: boolean) => void;
+interface obj {
+  userName: string;
+  passWord: string;
 }
-
-// let Accessors: obj = {
-//   userName: "SUSHANT",
-//   passWord: "9860336973",
-// };
 
 const LoginPage = () => {
+  let [username, setName] = useState("");
+  let [password, setPass] = useState("");
 
-const [email,setEmail]=useState('');
+  const signin = async () => {
+    try {
+      await signInWithEmailAndPassword(auth, username, password);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  console.log(auth.currentUser?.email);
 
-const [PassWord,setPassword]=useState('');
-
-const [error,setError]=useState('');
-  
-
-
-const handellogin = async() =>
-{
-try{
-  await signInWithEmailAndPassword(auth, email, PassWord)
-  setError('');
-  console.group('User logged in successfully!');
-}catch(error){
-  setError('Faild to login check the credentials,');
-  console.error('error logging in',error);
-}
-
-
-}
-
- 
 
   return (
-    <div>
-      <h1
-        className="
+    <div className="body">
+      <div>
+        <h1
+          className="
         heading"
-      >
-        WELCOME TO FEEDBACK SYSTEM
-      </h1>
-      <div className="center">
-        <h2>Login</h2>
+        >
+          WELCOME TO FEEDBACK SYSTEM
+        </h1>
       </div>
+
       <div className="login">
         
         <div className="loginForm">
+          <h1>LOGIN</h1>
           <input
           type="text" 
           placeholder="Email"
@@ -72,14 +48,12 @@ try{
 
           <input
             type="password"
-            placeholder="password"
-            value={PassWord}
-            onChange={(e) => setPassword(e.target.value) }
-            />
+            placeholder="PASSWORD"
+            value={password}
+            onChange={(e) => setPass(e.target.value)}
+          ></input>
+          <button onClick={signin}>SUBMIT</button>
 
-          
-
-          <button onClick={() => handellogin()}>SUBMIT</button>
         </div>
       </div>
     </div>

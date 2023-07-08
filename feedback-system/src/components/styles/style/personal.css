@@ -1,0 +1,137 @@
+/* .inp-ask {
+  margin-top: 3rem;
+  font-size: 22px;
+  font-weight: bold;
+  color: #4348e1;
+  margin-left: 4rem;
+}
+body {
+  width: 100vw;
+}
+.inp-ask > select {
+  margin-left: 1.3rem;
+  width: 10rem;
+  height: 1.5rem;
+}
+.inp-ask > label {
+  width: 20rem;
+}
+.inp-ask > select:hover {
+  border: 2px solid blue;
+}
+.bar-graph {
+  width: 900px;
+  margin: 0px 100px;
+}
+.bar-graph > h3 {
+  text-align: center;
+  font-size: 30px;
+  color: rgb(66, 66, 66);
+}
+.doughnut {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  width: 400px;
+  margin-top: 10rem;
+  
+}
+.doughnut>h3{
+    text-align: center;
+    font-size: 30px;
+    color: rgb(66, 66, 66);
+    width: 60rem;
+}
+.graphs {
+  margin: 6rem 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.card-disp{
+    background-color: #6265c6;
+    width: 30rem;
+    height: 7rem;
+    margin: 5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    color: white;
+    font-style: italic;
+    border: 2px solid black;
+    border-radius: 9px;
+    box-shadow: 12px 20px 54px 8px rgba(0, 0, 0, 0.2);
+}
+.card>h3{
+    color :white;
+}
+
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.inp-ask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2em;
+}
+
+.inp-ask select {
+  border: none;
+  padding: 5px;
+  width: 150px;
+  border-radius: 20px;
+  outline: none;
+}
+
+.center .card-disp img {
+  width: 200px;
+  height: 200px;
+}
+
+.graphs {
+  width: auto;
+  height: 400px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.center .card-disp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 100px;
+  background: rgba(125, 125, 125, 0.2);
+  padding: 1rem;
+  border-radius: 5px;
+  color: grey;
+  text-shadow: 1px 1px #000;
+  gap: 2px;
+}
+
+.inp-ask {
+  background: rgba(125, 125, 125, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bar-graph {
+  height: 500px;
+  width: 500px;
+}
+
+.card-disp div img {
+  margin-bottom: 20px;
+}
