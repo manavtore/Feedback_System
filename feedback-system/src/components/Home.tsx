@@ -10,6 +10,8 @@ interface HomeProps {
 
 const Home = ({ setUser }: HomeProps) => {
   return (
+    
+
     <main>
       <h3>AMPLIFY YOUR VOICE WITH FEEDBACK SYSTEM</h3>
       <div className="img-txt">
@@ -25,6 +27,12 @@ const Home = ({ setUser }: HomeProps) => {
       </Link>
       <Link to="/portal">
         <button className="white-btn">Feedback</button>
+      </Link>
+      <Link to={`/`}>
+      <button onClick={() => {
+        signOut(auth)
+        setLoggedIn(null)
+      }}>hello</button>
       </Link>
       <ImageInfo></ImageInfo>
     </main>

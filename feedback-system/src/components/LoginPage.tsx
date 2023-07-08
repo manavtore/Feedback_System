@@ -22,6 +22,7 @@ const LoginPage = () => {
   };
   console.log(auth.currentUser?.email);
 
+
   return (
     <div className="body">
       <div>
@@ -34,17 +35,17 @@ const LoginPage = () => {
       </div>
 
       <div className="login">
+        
         <div className="loginForm">
           <h1>LOGIN</h1>
           <input
-            type="text"
-            placeholder="USERNAME"
-            value={username}
-            onChange={(e) => {
-              setName(e.target.value);
-              console.log(username);
-            }}
-          ></input>
+          type="text" 
+          placeholder="Email"
+          value={email}  
+          onChange={(e) => setEmail(e.target.value) }
+          />
+         
+
           <input
             type="password"
             placeholder="PASSWORD"
@@ -52,6 +53,7 @@ const LoginPage = () => {
             onChange={(e) => setPass(e.target.value)}
           ></input>
           <button onClick={signin}>SUBMIT</button>
+
         </div>
       </div>
     </div>
